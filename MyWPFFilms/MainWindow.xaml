@@ -5,10 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyWPFFilms"
         mc:Ignorable="d"
-        Title="MyWPFFilms" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="MyWPFFilms" Height="400" Width="600">
     <Grid>
-        <Button Content="¡Púlsame!"
-                Height="100"
-                Width="100"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1">
+            <GroupBox Header="Username:">
+                <TextBox Name="txB_Username"/>
+            </GroupBox>
+            <GroupBox Header="Password:">
+                <PasswordBox Name="txB_Password"/>
+            </GroupBox>
+            <Button Content="Login"
+                    Name="btn_Login"
+                    Click="btn_Login_Click"/>
+            <Label Content="Success!"
+                   Name="lbl_LoginInfo"
+                   Background="Green"
+                   Margin="3"
+                   Visibility="Hidden"/>
+        </StackPanel>
     </Grid>
 </Window>

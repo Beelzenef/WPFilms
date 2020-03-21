@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MyWPFFilms
 {
@@ -20,9 +8,43 @@ namespace MyWPFFilms
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string SUCCESS_MESSAGE = "Success!";
+        const string ERROR_MESSAGE = "Something went wrong...";
+
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            CheckLogin();
+        }
+
+        private void CheckLogin()
+        {
+            lbl_LoginInfo.Visibility = Visibility.Visible;
+            if (string.IsNullOrEmpty(txB_Password.Password) || string.IsNullOrEmpty(txB_Username.Text))
+            {
+                LoginError();
+            }
+            else
+            {
+                LoginSuccess();
+            }
+        }
+
+        private void LoginError()
+        {
+            lbl_LoginInfo.Content = ERROR_MESSAGE;
+            lbl_LoginInfo.Background = new SolidColorBrush(Colors.Red);
+        }
+
+        private void LoginSuccess()
+        {
+            lbl_LoginInfo.Content = SUCCESS_MESSAGE;
+            lbl_LoginInfo.Background = new SolidColorBrush(Colors.Green);
         }
     }
 }
