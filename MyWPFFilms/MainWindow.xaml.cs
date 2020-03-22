@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 
 namespace MyWPFFilms
@@ -14,7 +15,6 @@ namespace MyWPFFilms
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
@@ -32,7 +32,17 @@ namespace MyWPFFilms
             else
             {
                 LoginSuccess();
+                OpenMngWindow();
             }
+        }
+
+        private void OpenMngWindow()
+        {
+            System.Threading.Thread.Sleep(2000);
+
+            FilmMng filmMng = new FilmMng();
+            filmMng.Show();
+            this.Close();
         }
 
         private void LoginError()
